@@ -1,0 +1,75 @@
+Alternatively, if you prefer not to use git on the server:
+Build locally: npm run build
+Upload the dist directory to your server:
+
+Fix permissions on the server:
+      sudo find /home/ubuntu/rynovatrade/dist -type d -exec chmod 755 {} \;
+      sudo find /home/ubuntu/rynovatrade/dist -type f -exec chmod 644 {} \;
+      sudo chown -R www-data:www-data /home/ubuntu/rynovatrade/dist
+
+
+2nd
+Create a deployment script for easy updates:
+   sudo nano /home/ubuntu/rynovatrade/deploy.sh
+
+Add this content:
+   #!/bin/bash
+   
+   echo "Deploying new changes to production..."
+   
+   # Pull latest code from repository
+   cd /home/ubuntu/rynovatrade
+   git pull
+   
+   # Install dependencies (if needed)
+   npm ci
+   
+   # Build the application
+   npm run build
+   
+   # Set proper permissions
+   sudo find /home/ubuntu/rynovatrade/dist -type d -exec chmod 755 {} \;
+   sudo find /home/ubuntu/rynovatrade/dist -type f -exec chmod 644 {} \;
+   sudo chown -R www-data:www-data /home/ubuntu/rynovatrade/dist
+   
+   # Restart Nginx to refresh cache
+   sudo systemctl restart nginx
+   
+   echo "Deployment completed successfully!"
+
+Make the script executable:
+   sudo chmod +x /home/ubuntu/rynovatrade/deploy.sh
+
+For regular updates, follow this workflow:
+Make changes to your code locally
+Test changes in development
+Commit and push to your repository
+Connect to your server and run the deployment script:
+      cd /home/ubuntu/rynovatrade
+      sudo ./deploy.sh
+
+
+#IMPORTANT
+1:    sudo /home/ubuntu/deploy.sh
+2:    copy contents of the Dist folder into temp_folder, (not the entire dist folder into Temp_folder)
+
+
+
+#google sheets docs
+image.png
+
+#Deployment ID
+AKfycbz4v3deY3LwxEUAcIPTEMyo7ZRN2xLV3cprX5dp64B35SqNotIEPPkP-_JvSmUMmRVj
+
+
+Web app
+URL
+https://script.google.com/macros/s/AKfycbz4v3deY3LwxEUAcIPTEMyo7ZRN2xLV3cprX5dp64B35SqNotIEPPkP-_JvSmUMmRVj/exec
+
+
+
+#reCAPTCHA
+Use this site key in the HTML code your site serves to users.
+6Le2GgErAAAAAPLykENu2vO6-IXAoBW7U1SdqsC9
+Use this secret key for communication between your site and reCAPTCHA.
+6Le2GgErAAAAAP5y8PJOdVUGAx2lP3xnDs0ROzHs
