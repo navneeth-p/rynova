@@ -55,6 +55,31 @@ Connect to your server and run the deployment script:
 
 
 
+#github
+
+# First, make sure you're in your project directory
+cd "C:\Users\rhish\Desktop\Rynova"
+
+# Initialize git if not already done
+git init
+
+# Add your remote repository
+git remote add origin https://github.com/navneeth-p/rynova.git
+
+# Add all your new files
+git add .
+
+# Commit your changes
+git commit -m "Update with latest version of Rynova app and add deployment workflow"
+
+# Force push to update the repository with your latest version
+# Be careful with force push as it will overwrite the remote repository
+git push -f origin main
+
+
+
+
+
 #google sheets docs
 image.png
 

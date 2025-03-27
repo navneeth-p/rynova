@@ -40,7 +40,7 @@ const projects: Project[] = [
     id: 1,
     title: 'Modern Living Room Floor',
     category: 'Earthos',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80',
+    image: '/images/Modern_living_room.webp',
     description: 'A seamless Earthos microcement floor with a sophisticated matte finish.',
     projectLink: '/project/living-room-floor',
   },
